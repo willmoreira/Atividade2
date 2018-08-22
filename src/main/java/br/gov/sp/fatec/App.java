@@ -1,6 +1,7 @@
 package br.gov.sp.fatec;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -38,26 +39,38 @@ public class App
 		dep2.setNome("marcos2");
 		depenRepo.save(dep2);	
 		
+		Dependente dep3 = new Dependente();
+		dep3.setNome("CACAU");
+		depenRepo.save(dep3);
+		
 		Servico serv1 = new Servico();
 		serv1.setNome("padeiro");
 		servRepo.save(serv1);
 		
-		Funcionario func1 = new Funcionario();
-		func1.setNome("Moreira");
-		func1.setCpf(22229);
-		func1.setNomeServico("Vendedor");
-		func1.setNomeDependente("William");
-		func1.setNomeDependente("Nicolas");
-		funcRepo.save(func1);
+//		Funcionario func2 = new Funcionario();
+//		func2.setNome("Moreira");
+//		func2.setCpf(22229);
+//		func2.setNomeServico("Vendedor");
+//		func2.setDependentes(new ArrayList<Dependente>());
+//		func2.getDependentes().add(dep1);
+//		funcRepo.save(func2);
+//		System.out.println("Id: " + func2.getId());
 		
-		System.out.println("Id: " + func1.getId());
-
+		System.out.println("NOVO FUNCIONARIO TEM NOVAS DEPENDENCIAS!");
+		Funcionario func3 = new Funcionario();
+		func3.setNome("Wander");
+		func3.setCpf(66666);
+		func3.setNomeServico("LIXO");
+		func3.setDependentes(new ArrayList<Dependente>());
+		func3.getDependentes().add(dep3);
+		funcRepo.save(func3);
+		System.out.println("ID DO NOVO FUNCIONARIO"+func3.getId());
 		// Exclui usuario
-		funcRepo.delete(funcRepo.findByNome("Moreira"));
+		//funcRepo.delete(funcRepo.findByNome("Moreira"));
 		// Exclui autorizacoes
-		servRepo.delete(serv1);
-		depenRepo.delete(dep1);
-		depenRepo.delete(dep2);
+		//servRepo.delete(serv1);
+		//depenRepo.delete(dep1);
+		//depenRepo.delete(dep2);
 				
 		
 		

@@ -31,19 +31,12 @@ public class Funcionario {
     @Column(name = "func_servico", length = 50, nullable = false)
 	private String nomeServico;
 	
-    @Column(name = "func_depen", length = 50, nullable = false)
-    public String getNomeDependente() {
-		return nomeDependente;
-	}
-
-	public void setNomeDependente(String nomeDependente) {
-		this.nomeDependente = nomeDependente;
-	}
-
-	@Column(name = "func_depen", length = 50, nullable = false)
-	private String nomeDependente;
+    @OneToMany
+    @JoinColumn(name = "depen_id")	
+	private List<Dependente> dependentes;
 	
-    public Long getId() {
+
+	public Long getId() {
 		return id;
 	}
 
@@ -67,12 +60,20 @@ public class Funcionario {
 		this.cpf = cpf;
 	}
 
+	public void setNomeServico(String nomeServico) {
+		this.nomeServico = nomeServico;
+	}
+	
 	public String getNomeServico() {
 		return nomeServico;
 	}
+	
+	public List<Dependente> getDependentes() {
+		return dependentes;
+	}
 
-	public void setNomeServico(String nomeServico) {
-		this.nomeServico = nomeServico;
+	public void setDependentes(List<Dependente> dependentes) {
+		this.dependentes = dependentes;
 	}
 }
 	
